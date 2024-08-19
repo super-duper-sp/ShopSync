@@ -1,5 +1,5 @@
 import React from 'react'
-
+import kaju from "../../assets/images/kaju.jpg"
 const Testimonials = () => {
   return (
     <section className="flex items-center justify-center py-20 bg-white min-w-screen">
@@ -21,7 +21,7 @@ const Testimonials = () => {
         </h2>
         <div className="block w-full h-0.5 max-w-lg mt-6 bg-purple-100 rounded-full" />
         <div className="items-center justify-center w-full mt-12 mb-4 lg:flex">
-          <div className="flex flex-col items-start justify-start w-full h-auto mb-12 lg:w-1/3 lg:mb-0">
+          {/* <div className="flex flex-col items-start justify-start w-full h-auto mb-12 lg:w-1/3 lg:mb-0">
             <div className="flex items-center justify-center">
               <div className="w-16 h-16 mr-4 overflow-hidden bg-gray-200 rounded-full">
                 <img
@@ -39,26 +39,26 @@ const Testimonials = () => {
               next level. If you are looking for the ultimate toolset, this is
               it!"
             </blockquote>
-          </div>
+          </div> */}
           <div className="flex flex-col items-start justify-start w-full h-auto px-0 mx-0 mb-12 border-l border-r border-transparent lg:w-1/3 lg:mb-0 lg:px-8 lg:mx-8 lg:border-gray-200">
             <div className="flex items-center justify-center">
               <div className="w-16 h-16 mr-4 overflow-hidden bg-gray-200 rounded-full">
                 <img
-                  src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2547&q=80"
+                  src={kaju}
                   className="object-cover w-full h-full"
                 />
               </div>
               <div className="flex flex-col items-start justify-center">
-                <h4 className="font-bold text-gray-800">Jane Doe</h4>
-                <p className="text-gray-600">CTO of Business</p>
+                <h4 className="font-bold text-gray-800">Kamlesh Patidar</h4>
+                <p className="text-gray-600">Owner KajuStore</p>
               </div>
             </div>
             <blockquote className="mt-8 text-lg text-gray-500">
-              "Thanks for creating this service. My life is so much easier.
+              "Thanks for creating this service. Growth & Productivity increased at shop.
               Thanks for making such a great product."
             </blockquote>
           </div>
-          <div className="flex flex-col items-start justify-start w-full h-auto lg:w-1/3">
+          {/* <div className="flex flex-col items-start justify-start w-full h-auto lg:w-1/3">
             <div className="flex items-center justify-center">
               <div className="w-16 h-16 mr-4 overflow-hidden bg-gray-200 rounded-full">
                 <img
@@ -75,7 +75,7 @@ const Testimonials = () => {
               "Packed with awesome content and exactly what I was looking for. I
               would highly recommend this to anyone."
             </blockquote>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

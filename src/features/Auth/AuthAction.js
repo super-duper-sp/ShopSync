@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/api/user/login', credentials, {
+      const response = await axios.post('http://localhost:3002/api/user/login', credentials, {
         withCredentials: true, // Allows sending cookies with the request
       });
 

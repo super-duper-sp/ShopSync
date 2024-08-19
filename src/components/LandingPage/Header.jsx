@@ -11,7 +11,7 @@ const Header = () => {
           href="#_"
           className="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
         >
-          <span className="mx-auto text-xl font-black leading-none text-gray-900 select-none">
+          <span className="mx-auto text-4xl font-black leading-none text-gray-900 select-none">
             ShopSync<span className="text-orange-600">.</span>
           </span>
         </a>

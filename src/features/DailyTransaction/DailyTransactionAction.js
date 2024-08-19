@@ -12,10 +12,11 @@ export const addDailyTransaction = createAsyncThunk(
    console.log(transactionData);
     try {
       const response = await axios.post(
-        'http://localhost:3002/api/DailyTransactions',
+        '/api/DailyTransactions',
         transactionData,
       );
 
+      console.log("hum");
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

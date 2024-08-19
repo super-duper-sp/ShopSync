@@ -78,8 +78,10 @@ const NavigationBar = () => {
       style={{ height: navHeight }}
     >
       <div className="flex space-x-3 items-center">
-        <img className="h-7 w-9" src="/path/to/logo.png" alt="ShopSync Logo" />
-        <span className={isExpanded ? "block text-white" : "hidden"}>ShopSync</span>
+        {/* <img className="h-7 w-9" src="" /> */}
+        <span className={`mx-auto text-2xl font-black leading-none ${isExpanded ? "text-4xl" : "text-sm"}  text-white select-none`}>
+            ShopSync<span className="text-orange-600">.</span>
+          </span>
       </div>
 
       <div
