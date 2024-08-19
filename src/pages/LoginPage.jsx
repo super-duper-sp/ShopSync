@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Personalised/Logo";
 import { loginUser } from "../features/Auth/AuthAction";
-import shopsync from "../assets/shopsync.mp4";
-import Message from "../components/BlurMsg/Message"; // Import the Message component
+import shopsync from "../assets/shopsync.gif";
+
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,14 +26,7 @@ export const LoginPage = () => {
   return (
     <>
 
-    {/* Message Component for Displaying Errors */}
-    {error && (
-        <Message 
-          message={error} 
-          color="red" // You can change this to any supported color like "green"
-        />
-      )}
-
+   
     <div className="relative flex flex-col justify-center min-h-screen py-12 bg-black sm:px-6 lg:px-8">
       <div className="flex flex-wrap lg:flex-nowrap justify-center items-start space-x-8">
         {/* Form Section */}

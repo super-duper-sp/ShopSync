@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Personalised/Logo";
-import shopsync from "../assets/shopsync.mp4";
+import shopsync from "../assets/shopsync.gif";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../features/Auth/AuthAction";
 import Message from "../components/BlurMsg/Message";
