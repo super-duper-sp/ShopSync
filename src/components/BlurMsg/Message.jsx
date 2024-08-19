@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDailyTransaction } from "../../features/DailyTransaction/DailyTransactionAction";
+import Message from "../BlurMsg/Message"; // Import the Message component
 
 const EntryDailyTransaction = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.userData?.token);
+  const error = useSelector((state) => state.dailyTransaction.error);
 
   const [formData, setFormData] = useState({
     date: "",
@@ -24,18 +26,18 @@ const EntryDailyTransaction = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Dispatch the action with formData
-    dispatch(addDailyTransaction(formData))
-      
+    dispatch(addDailyTransaction(formData));
   };
 
   return (
-    <div className="px-4 py-4 rounded-xl border-2 border-gray-200">
+    <div className="relative px-4 py-4 rounded-xl border-2 border-gray-200">
+      {error && <Message message={error} color="red" />}
       <h3 className="text-lg font-semibold leading-6 text-gray-900 mb-4">
         Daily Transaction
       </h3>
-      <form className="flex space-x-4" onSubmit={handleSubmit}>
+      <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
         {/* Date */}
-        <div className="mb-4">
+        <div>
           <label
             htmlFor="date"
             className="text-sm font-medium leading-6 text-gray-900"
@@ -52,9 +54,9 @@ const EntryDailyTransaction = () => {
           />
         </div>
 
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Buy Amount */}
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="buyAmount"
               className="text-sm font-medium leading-6 text-gray-900"
@@ -73,7 +75,7 @@ const EntryDailyTransaction = () => {
           </div>
 
           {/* Buy Notes */}
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="buyNotes"
               className="text-sm font-medium leading-6 text-gray-900"
@@ -90,11 +92,9 @@ const EntryDailyTransaction = () => {
               placeholder="Enter buy notes"
             />
           </div>
-        </div>
 
-        <div>
           {/* Sell Amount */}
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="sellAmount"
               className="text-sm font-medium leading-6 text-gray-900"
@@ -113,7 +113,7 @@ const EntryDailyTransaction = () => {
           </div>
 
           {/* Sell Notes */}
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="sellNotes"
               className="text-sm font-medium leading-6 text-gray-900"
@@ -133,14 +133,12 @@ const EntryDailyTransaction = () => {
         </div>
 
         <div className="flex justify-end">
-        <div className="flex justify-end">
-    <button
-      type="submit"
-      className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 active:bg-blue-700"
-    >
-      Submit
-    </button>
-  </div>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 active:bg-blue-700"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -1,22 +1,19 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Header from '../components/HomePage/Header'
-import Sidebar from '../components/HomePage/Sidebar'
-import NavigationBar from '../components/HomePage/NavigationBar'
-
+import React from "react";
+import { Outlet } from "react-router-dom";
+import NavigationBar from "../components/HomePage/NavigationBar";
 
 const HomeLayout = () => {
   return (
-<>
-<div className='w-full flex'>
-<NavigationBar/>
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Navigation Bar */}
+      <NavigationBar className="w-64 bg-white shadow-md" />
 
-    <main>
-    <Outlet/>
-    </main>
- </div>
-</>
-  )
-}
+      {/* Main Content */}
+      <main className="flex-1 p-6">
+        <Outlet />
+      </main>
+    </div>
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;
