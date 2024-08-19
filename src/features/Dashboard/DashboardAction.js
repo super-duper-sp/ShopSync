@@ -5,7 +5,7 @@ export const fetchOfflineSalesAmount = createAsyncThunk(
   'dashboard/fetchOfflineSalesAmount',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3002/api/offline-sales-monthly',{
+      const response = await axios.get('/api/offline-sales-monthly',{
         
       withCredentials: true,
       
@@ -22,7 +22,7 @@ export const fetchOfflineSalesAmountYearly = createAsyncThunk(
     'dashboard/fetchOfflineSalesAmountYearly',
     async (year) => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/offline-sales-yearly/${year}`,{
+        const response = await axios.get(`/offline-sales-yearly/${year}`,{
         
         withCredentials: true,
         
@@ -39,7 +39,7 @@ export const fetchOfflineSalesAmountYearly = createAsyncThunk(
     'dashboard/fetchOfflineSalesAmountMonthlyYearly',
     async (year) => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/offline-sales-month-year/${year}`,{
+        const response = await axios.get(`/offline-sales-month-year/${year}`,{
         
         withCredentials: true,
         
@@ -56,7 +56,7 @@ export const fetchOfflineSalesAmountYearly = createAsyncThunk(
     'dashboard/fetchTotalRevenue',
     async (year, { rejectWithValue }) => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/total-revenue`, {
+        const response = await axios.get("/api/total-revenue", {
         
         withCredentials: true,
         
@@ -116,7 +116,7 @@ export const fetchAverageSales = createAsyncThunk(
   'dashboard/fetchAverageSales',
   async () => {
     try {
-      const response = await axios.get('/api/average-sales', {
+      const response = await axios.get('/api/average-sales/', {
         withCredentials: true,
       });
       return response.data;
