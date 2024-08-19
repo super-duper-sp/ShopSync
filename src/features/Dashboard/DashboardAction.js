@@ -75,7 +75,7 @@ export const fetchHighestMonthlySales = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3002/api/highest-monthly-sales",
+        "/api/highest-monthly-sales",
         {
           withCredentials: true,
         }
@@ -95,7 +95,7 @@ export const fetchLowestMonthlySales = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3002/api/lowest-monthly-sales",
+        "/api/lowest-monthly-sales",
         {
           withCredentials: true,
         }
@@ -116,7 +116,7 @@ export const fetchAverageSales = createAsyncThunk(
   'dashboard/fetchAverageSales',
   async () => {
     try {
-      const response = await axios.get('http://localhost:3002/api/average-sales', {
+      const response = await axios.get('/api/average-sales', {
         withCredentials: true,
       });
       return response.data;

@@ -21,7 +21,7 @@ const SalesMonthly = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://localhost:3002/api/offline-sales-monthly')
+    axios.get('/api/offline-sales-monthly')
       .then(response => {
         const data = response.data;
         const labels = [];

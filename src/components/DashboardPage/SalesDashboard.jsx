@@ -8,7 +8,7 @@ const OfflineSalesGraph = () => {
   const [monthlyYearlyData, setMonthlyYearlyData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002/api/offline-sales-monthly')
+    axios.get('/api/offline-sales-monthly')
       .then(response => {
         const monthlyData = Object.keys(response.data).map(key => {
           return {
@@ -22,7 +22,7 @@ const OfflineSalesGraph = () => {
         console.error(error);
       });
 
-    axios.get('http://localhost:3002/api/offline-sales-yearly/2024')
+    axios.get('/api/offline-sales-yearly/2024')
       .then(response => {
         const yearlyData = [
           {
@@ -36,7 +36,7 @@ const OfflineSalesGraph = () => {
         console.error(error);
       });
 
-    axios.get('http://localhost:3002/api/offline-sales-month-year/2024')
+    axios.get('/api/offline-sales-month-year/2024')
       .then(response => {
         const monthlyYearlyData = Object.keys(response.data.monthlySums).map(key => {
           return {

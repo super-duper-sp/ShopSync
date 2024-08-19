@@ -6,7 +6,7 @@ export const fetchShopDetails = createAsyncThunk(
   'shop/fetchShopDetails',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:3002/api/shop/',{
+      const response = await axios.get('/api/shop/',{
          
       withCredentials: true,
   
@@ -23,7 +23,7 @@ export const editShopDetails = createAsyncThunk(
   'shop/editShopDetails',
   async (shopDetails, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3002/api/shop/', shopDetails);
+      const response = await axios.post('/api/shop/', shopDetails);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

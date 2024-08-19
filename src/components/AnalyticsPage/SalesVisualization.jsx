@@ -27,7 +27,7 @@ const SalesVisualization = () => {
 
   useEffect(() => {
     // Fetch data from the API based on selected year
-    axios.get(`http://localhost:3002/api/offline-sales-month-year/${selectedYear}`)
+    axios.get(`/api/offline-sales-month-year/${selectedYear}`)
       .then(response => {
         setYearlySum(response.data.yearlySum);
         setMonthlySums(response.data.monthlySums);

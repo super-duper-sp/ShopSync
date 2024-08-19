@@ -54,7 +54,7 @@ export const updateDailyTransaction = createAsyncThunk(
 
     try {
       const response = await axios.put(
-        `http://localhost:3002/api/DailyTransactions/${id}`,
+        `/api/DailyTransactions/${id}`,
         transactionData,
            {
         withCredentials: true,
@@ -74,7 +74,7 @@ export const deleteDailyTransaction = createAsyncThunk(
   async (id, { rejectWithValue }) => {
   
     try {
-      await axios.delete(`http://localhost:3002/api/DailyTransactions/${id}`, {
+      await axios.delete(`/api/DailyTransactions/${id}`, {
         
             withCredentials: true,
             

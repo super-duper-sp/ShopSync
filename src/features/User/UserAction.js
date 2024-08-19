@@ -6,7 +6,7 @@ export const fetchUserProfile = createAsyncThunk(
   'user/fetchUserProfile',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:3002/api/user/profile');
+      const response = await axios.get('/api/user/profile');
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -19,7 +19,7 @@ export const updateUserProfile = createAsyncThunk(
   'user/updateUserProfile',
   async (profileData, { rejectWithValue }) => {
     try {
-      const response = await axios.put('http://localhost:3002/api/user/profile', profileData);
+      const response = await axios.put('/api/user/profile', profileData);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

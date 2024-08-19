@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3002/api/user/login', credentials, {
+      const response = await axios.post('/api/user/login', credentials, {
         withCredentials: true, // Allows sending cookies with the request
       });
 
@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3002/api/user/register', credentials, {
+      const response = await axios.post('/api/user/register', credentials, {
         withCredentials: true, // Allows sending cookies with the request
       });
       return response.data; // Assuming the server sends back user data or a success message
@@ -43,7 +43,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('http://localhost:3002/api/user/logout', {}, {
+      await axios.post('/api/user/logout', {}, {
         withCredentials: true, // Allows sending cookies with the request
       });
       return; // No payload needed for logout

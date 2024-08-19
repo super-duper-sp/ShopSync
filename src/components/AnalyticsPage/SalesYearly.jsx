@@ -10,7 +10,7 @@ const SalesYearly = () => {
   useEffect(() => {
     if (selectedYear) {
       // Fetch data from the API with the selected year using axios
-      axios.get(`http://localhost:3002/api/offline-sales-yearly/${selectedYear}`)
+      axios.get(`/api/offline-sales-yearly/${selectedYear}`)
         .then(response => {
           setYearlySum(response.data.yearlySum);
         })
