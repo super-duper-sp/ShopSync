@@ -1,5 +1,4 @@
 {
-  "proxy":"https://bshopsync.vercel.app",
   "name": "shopsync",
   "version": "0.1.0",
   "private": true,

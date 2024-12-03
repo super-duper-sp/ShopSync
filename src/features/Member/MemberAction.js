@@ -1,10 +1,14 @@
 import axios from 'axios';
 import {  createAsyncThunk } from '@reduxjs/toolkit';
 
+import { BASE_URL } from '../../utils/constants';
+
+
+
 export const fetchMembers = createAsyncThunk(
   'members/fetchMembers',
   async () => {
-    const response = await axios.get('/api/shopmember',
+    const response = await axios.get(`${BASE_URL}/api/shopmember`,
     {
         
         withCredentials: true,
@@ -17,7 +21,7 @@ export const fetchMembers = createAsyncThunk(
 export const addMember = createAsyncThunk(
   'members/addMember',
   async (memberData) => {
-    const response = await axios.post('/api/shopmember', memberData,{
+    const response = await axios.post(`${BASE_URL}/api/shopmember`, memberData,{
         
     withCredentials: true,
     
@@ -29,7 +33,7 @@ export const addMember = createAsyncThunk(
 export const updateMember = createAsyncThunk(
   'members/updateMember',
   async ({ id, memberData }) => {
-    const response = await axios.put(`/api/shopmember/${id}`, memberData,{
+    const response = await axios.put(`${BASE_URL}/api/shopmember/${id}`, memberData,{
         
     withCredentials: true,
     
@@ -41,7 +45,7 @@ export const updateMember = createAsyncThunk(
 export const deleteMember = createAsyncThunk(
   'members/deleteMember',
   async (id) => {
-    const response = await axios.delete(`/api/shopmember/${id}`,{
+    const response = await axios.delete(`${BASE_URL}/api/shopmember/${id}`,{
         
     withCredentials: true,
     

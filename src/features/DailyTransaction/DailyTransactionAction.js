@@ -1,6 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { BASE_URL } from '../../utils/constants';
+
 axios.defaults.withCredentials = true; // Ensure cookies are sent with requests
+
 
 
 
@@ -12,7 +15,7 @@ export const addDailyTransaction = createAsyncThunk(
    console.log(transactionData);
     try {
       const response = await axios.post(
-        '/api/DailyTransactions',
+        `${BASE_URL}/api/DailyTransactions`,
         transactionData,
       );
 
@@ -34,7 +37,7 @@ export const fetchDailyTransactions = createAsyncThunk(
     month = new Date().getMonth() + 1,
   }, { rejectWithValue }) => {
     try {
-      const response = await fetch(`/api/DailyTransactions?page=${page}&limit=${limit}&year=${year}&month=${month}`);
+      const response = await fetch(`${BASE_URL}/api/DailyTransactions?page=${page}&limit=${limit}&year=${year}&month=${month}`);
       const data = await response.json();
       return {
         data: data.data,
@@ -55,7 +58,7 @@ export const updateDailyTransaction = createAsyncThunk(
 
     try {
       const response = await axios.put(
-        `/api/DailyTransactions/${id}`,
+        `${BASE_URL}/api/DailyTransactions/${id}`,
         transactionData,
            {
         withCredentials: true,
@@ -75,7 +78,7 @@ export const deleteDailyTransaction = createAsyncThunk(
   async (id, { rejectWithValue }) => {
   
     try {
-      await axios.delete(`/api/DailyTransactions/${id}`, {
+      await axios.delete(`${BASE_URL}/api/DailyTransactions/${id}`, {
         
             withCredentials: true,
             

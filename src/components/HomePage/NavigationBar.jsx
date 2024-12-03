@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, LayoutDashboard, Clock3, BarChart2, ArrowRight, ArrowRightLeft, HelpCircleIcon } from "lucide-react";
 import { logoutUser } from "../../features/Auth/AuthAction";
+import Cookies from 'js-cookie';
 
 const navlinks = [
   { name: "Dashboard", icon: LayoutDashboard, path: "/home" },
@@ -63,8 +64,10 @@ const NavigationBar = () => {
       localStorage.removeItem('authToken');
       sessionStorage.removeItem('userData');
 
+      Cookies.remove('token');
+
       // Redirect to login or home page
-      navigate('/'); // Or another route
+      
     } catch (error) {
       console.error('Logout failed:', error);
     }
