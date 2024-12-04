@@ -166,7 +166,7 @@ const TransactionsTable = () => {
 
                 return (
                   <tr key={transaction._id} className="hover:bg-gray-50">
-                    <td className={classes}>{formatDate(transaction.date)}</td>
+                    <td className={classes}>{transaction.normalizedDate}</td>
                     <td className={classes}>{transaction.buyAmount}</td>
                     <td className={classes}>{transaction.sellAmount}</td>
                     <td className={classes}>{transaction.buyNotes}</td>

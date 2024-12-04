@@ -67,7 +67,7 @@ const WholeInfo = () => {
               </div>
             </div>
             <div className="mt-4 text-xl font-medium">
-              ₹ {highestMonthlySales?.sales?.toLocaleString() || "Loading..."}
+              ₹ {highestMonthlySales?.sales?.toLocaleString() || "Loading..." || error}
             </div>
           </div>
         </div>

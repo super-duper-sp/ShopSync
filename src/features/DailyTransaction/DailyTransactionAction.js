@@ -30,23 +30,31 @@ export const addDailyTransaction = createAsyncThunk(
 // Get all daily transactions
 export const fetchDailyTransactions = createAsyncThunk(
   'dailyTransactions/fetchDailyTransactions',
-  async ({
-    page = 1,
-    limit = 10,
-    year = new Date().getFullYear(),
-    month = new Date().getMonth() + 1,
-  }, { rejectWithValue }) => {
+  async (
+    {
+      page = 1,
+      limit = 10,
+      year = new Date().getFullYear(),
+      month = new Date().getMonth() + 1,
+    },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/DailyTransactions?page=${page}&limit=${limit}&year=${year}&month=${month}`);
-      const data = await response.json();
-      return {
-        data: data.data,
-        page: data.pagination.page,
-        totalPages: data.pagination.totalPages,
-        total: data.pagination.total,
-      };
+      // Send query parameters to filter data
+      const response = await axios.get(`${BASE_URL}/api/DailyTransactions`, {
+        // params: { page, limit, year, month }, // Send as query params
+        withCredentials: true, // Include credentials (cookies)
+      });
+
+      // Axios automatically parses JSON, so directly return data
+      return response.data; 
     } catch (error) {
-      return rejectWithValue('Failed to fetch transactions');
+      // Provide more meaningful error messages
+      return rejectWithValue(
+        error.response && error.response.data
+          ? error.response.data.message || 'Failed to fetch transactions'
+          : error.message
+      );
     }
   }
 );
