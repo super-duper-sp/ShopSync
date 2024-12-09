@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { BASE_URL } from '../../utils/constants';
+
 // Register chart components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -21,7 +23,7 @@ const SalesMonthly = () => {
   ];
 
   useEffect(() => {
-    axios.get('/api/offline-sales-monthly')
+    axios.get(`${BASE_URL}/api/offline-sales-monthly`)
       .then(response => {
         const data = response.data;
         const labels = [];

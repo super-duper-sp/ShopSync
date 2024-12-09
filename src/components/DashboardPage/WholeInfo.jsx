@@ -8,6 +8,7 @@ import {
   fetchAverageSales,
 } from "../../features/Dashboard/DashboardAction";
 import SalesYearly from "../AnalyticsPage/SalesYearly";
+import QueryAi from "../AI/QueryAi";
 
 const WholeInfo = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const WholeInfo = () => {
     lowestMonthlySales,
     averageSales,
     status,
+    totalRevenueAiComment,
     error,
   } = useSelector((state) => state.dashboard);
 
@@ -27,6 +29,16 @@ const WholeInfo = () => {
     dispatch(fetchAverageSales());
   }, [dispatch]);
 
+  const startDate = '12 January 2020'; // Replace with your actual start date
+  const today = new Date(); // Get today's date
+
+  // Format today's date
+  const formattedToday = today.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
     <div className="h-screen w-full flex flex-col py-16 px-4 sm:px-8 lg:px-14 space-y-8">
       <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
@@ -36,19 +48,21 @@ const WholeInfo = () => {
         <div className="w-full lg:w-1/2 px-4 py-4 rounded-xl border-2 border-gray-200 bg-white shadow-md">
           <h2 className="text-lg font-bold">Total Revenue</h2>
           <p className="text-sm text-gray-400">
-            12 January 2020 - 12 January 2024
+            {startDate} - {formattedToday}
           </p>
           <div className="mt-6 flex flex-col">
             <div className="font-bold text-4xl">
               ₹ {totalRevenue?.toLocaleString() || "Loading..."}
             </div>
             <div className="py-2 px-2 border-2 border-gray-200 rounded-b-full rounded-r-full mt-2">
-              <p className="text-sm">You have a great performance</p>
+              <p className="text-sm">${totalRevenueAiComment}</p>
             </div>
           </div>
         </div>
 
         <SalesYearly/>
+
+        <QueryAi/>
       </div>
 
       {/* Highest and Lowest Month Info */}

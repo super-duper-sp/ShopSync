@@ -15,6 +15,7 @@ const dashboardSlice = createSlice({
     offlineSales: {},
     yearlySales: 0,
     totalRevenue: 0,
+    totalRevenueAiComment: {},
     monthlySales: {},
     highestMonthlySales: {},
     lowestMonthlySales: {},
@@ -64,6 +65,7 @@ const dashboardSlice = createSlice({
       })
       .addCase(fetchTotalRevenue.fulfilled, (state, action) => {
         state.totalRevenue = action.payload.totalRevenue;
+        state.totalRevenueAiComment = action.payload.aiComment;
         state.loading = false;
       })
       .addCase(fetchTotalRevenue.rejected, (state, action) => {

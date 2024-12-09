@@ -71,9 +71,9 @@ const MemberList = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4  bg-white shadow-md rounded-lg">
       <div className="overflow-x-auto">
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-96 overflow-y-auto ">
           <table className="w-full min-w-full border-collapse bg-white shadow-md rounded-lg">
             <thead>
               <tr className="bg-blue-100 border-b">

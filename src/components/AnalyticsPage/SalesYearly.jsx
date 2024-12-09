@@ -1,6 +1,8 @@
 // src/YearlySalesCard.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../../utils/constants';
+
 
 const SalesYearly = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +12,7 @@ const SalesYearly = () => {
   useEffect(() => {
     if (selectedYear) {
       // Fetch data from the API with the selected year using axios
-      axios.get(`/api/offline-sales-yearly/${selectedYear}`)
+      axios.get(`${BASE_URL}/api/offline-sales-yearly/${selectedYear}`)
         .then(response => {
           setYearlySum(response.data.yearlySum);
         })

@@ -16,6 +16,8 @@ import UserPage from '../pages/UserPage';
 import PageNotFound from '../pages/PageNotFound';
 import {jwtDecode} from 'jwt-decode';
 import Cookies from 'js-cookie';
+import { fetchUserProfile } from './../features/User/UserAction';
+
 
 
 export const AppRoutes = () => {
@@ -55,6 +57,10 @@ export const AppRoutes = () => {
   // }
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.user.user);
+  const loading = useSelector((state) => state.user.loading);
+  const error = useSelector((state) => state.user.error);
+
   useEffect(() => {
     const token = Cookies.get('token'); // Or localStorage.getItem('token');
     if (token) {
@@ -63,6 +69,11 @@ export const AppRoutes = () => {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchUserProfile());
+  }, [dispatch]);
+
+  
   return (
     <Routes>
       {/* Public Routes */}
@@ -72,14 +83,28 @@ export const AppRoutes = () => {
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
+
         <Route path="/home" element={<HomeLayout />}>
           <Route index element={<DashboardPage />} />
           <Route path="dailytransactions" element={<DailyTransactionPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
+
+
           <Route path="settings" element={<SettingLayout />}>
-            <Route path="shop" element={<ShopPage />} />    {/* Shop Settings Sub-route */}
-            <Route path="user" element={<UserPage />} />    {/* User Settings Sub-route */}
+              { user?.role.includes('admin') && (
+                <>
+                  <Route path="shop" element={<ShopPage />} />   
+                  <Route path="user" element={<UserPage />} />
+                </>
+              )}  
+               { user?.role.includes('shopmember') && (
+                <>
+                  <Route path="user" element={<UserPage />} />
+                </>
+              )}  
           </Route>
+
+
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Route>

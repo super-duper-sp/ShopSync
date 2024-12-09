@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Personalised/Logo";
 import { loginUser } from "../features/Auth/AuthAction";
 import shopsync from "../assets/shopsync.gif";
+import { fetchUserProfile} from "../features/User/UserAction";
 
 
 export const LoginPage = () => {
@@ -17,11 +18,14 @@ export const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
+    dispatch(fetchUserProfile());
   };
 
   if (isAuthenticated) {
     navigate("/home"); 
   }
+
+
 
   return (
     <>

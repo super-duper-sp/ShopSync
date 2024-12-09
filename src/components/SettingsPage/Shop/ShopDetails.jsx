@@ -43,8 +43,10 @@ const ShopDetails = () => {
 
   return (
     <div className="p-6 bg-white shadow-lg rounded-lg max-w-4xl mx-auto mt-10">
+      
     {loading && <p className="text-center text-blue-500">Loading...</p>}
     {error && <p className="text-center text-red-500">Error: {error}</p>}
+
     {shop && (
       <div>
         {isEditing ? (

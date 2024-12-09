@@ -86,7 +86,7 @@ const LineChart = () => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3002/api/offline-sales-month-year/2024')
+    axios.get(`${BASE_URL}/api/offline-sales-month-year/2024`)
       .then(response => {
         const monthlySums = response.data.monthlySums;
         const labels = Object.keys(monthlySums).map(key => {
