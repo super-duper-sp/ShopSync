@@ -30,9 +30,7 @@ const EntryDailyTransaction = () => {
 
   return (
     <div className="px-4 py-4 rounded-xl border-2 border-gray-200">
-      <h3 className="text-lg font-semibold leading-6 text-gray-900 mb-4">
-        Daily Transaction
-      </h3>
+     
       <form className="flex space-x-4" onSubmit={handleSubmit}>
         {/* Date */}
         <div className="mb-4">

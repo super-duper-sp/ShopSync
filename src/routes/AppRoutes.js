@@ -17,6 +17,7 @@ import PageNotFound from '../pages/PageNotFound';
 import {jwtDecode} from 'jwt-decode';
 import Cookies from 'js-cookie';
 import { fetchUserProfile } from './../features/User/UserAction';
+import Experimental from '../pages/Experimental';
 
 
 
@@ -71,13 +72,15 @@ export const AppRoutes = () => {
 
   useEffect(() => {
     dispatch(fetchUserProfile());
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   
   return (
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<LandingPage />} />
+      <Route path="/ex" element={<Experimental />} />
+      
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
 
@@ -91,7 +94,10 @@ export const AppRoutes = () => {
 
 
           <Route path="settings" element={<SettingLayout />}>
-              { user?.role.includes('admin') && (
+
+                 <Route path="shop" element={<ShopPage />} />   
+                  <Route path="user" element={<UserPage />} />
+              {/* { user?.role.includes('admin') && (
                 <>
                   <Route path="shop" element={<ShopPage />} />   
                   <Route path="user" element={<UserPage />} />
@@ -101,7 +107,7 @@ export const AppRoutes = () => {
                 <>
                   <Route path="user" element={<UserPage />} />
                 </>
-              )}  
+              )}   */}
           </Route>
 
 

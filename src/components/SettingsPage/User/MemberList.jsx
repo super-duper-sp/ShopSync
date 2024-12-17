@@ -7,6 +7,7 @@ const MemberList = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editedMember, setEditedMember] = useState({});
+  const [showAddMemberModal, setShowAddMemberModal] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const MemberList = () => {
 
   const handleSaveEdit = async () => {
     try {
-      await dispatch(updateMember({id: editedMember._id ,memberData: editedMember}));
+      await dispatch(updateMember({ id: editedMember._id, memberData: editedMember }));
       setEditIndex(null);
       setShowEditModal(false);
       alert("Member updated successfully");
@@ -55,6 +56,16 @@ const MemberList = () => {
     setEditIndex(null);
     setShowEditModal(false);
   };
+
+  const handleAddMemberCloseModal = () => {
+    setShowAddMemberModal(false)
+  };
+
+  const handleAddMember = () => {
+    setShowAddMemberModal(true)
+  };
+
+
 
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -71,52 +82,79 @@ const MemberList = () => {
   }
 
   return (
-    <div className="container mx-auto p-4  bg-white shadow-md rounded-lg">
-      <div className="overflow-x-auto">
-        <div className="max-h-96 overflow-y-auto ">
-          <table className="w-full min-w-full border-collapse bg-white shadow-md rounded-lg">
+    <div>
+
+
+     
+        <div>
+        <div className="flex justify-between items-center">
+  <h2 className="text-xl font-bold">Shop Member's</h2>
+  <a
+   
+    className="text-yellow-500 hover:text-yellow-700 text-sm"
+    onClick={() => handleAddMember()}
+  >
+    + Add Member 
+  </a>
+</div>
+          <table className="w-full mt-4">
             <thead>
-              <tr className="bg-blue-100 border-b">
-                <th className="px-4 py-2 text-left text-gray-700 font-semibold">Name</th>
-                <th className="px-4 py-2 text-left text-gray-700 font-semibold">Email</th>
-                <th className="px-4 py-2 text-left text-gray-700 font-semibold">Role</th>
-                <th className="px-4 py-2 text-left text-gray-700 font-semibold">Edit</th>
-                <th className="px-4 py-2 text-left text-gray-700 font-semibold">Delete</th>
+              <tr className="text-gray-500 text-sm">
+                <th className="text-left py-2">Name</th>
+                <th className="py-2">Email</th>
+                <th className="py-2">Role</th>
+                <th className="py-2">Edit</th>
+                <th className="py-2">Save</th>
               </tr>
             </thead>
             <tbody>
+
               {members.map(({ _id, name, email, role }, index) => (
-                <tr key={_id} className="hover:bg-gray-100">
-                  <td className="px-4 py-2">{name}</td>
-                  <td className="px-4 py-2">{email}</td>
-                  <td className="px-4 py-2">{role}</td>
-                  <td className="px-4 py-2">
+
+                <tr
+                  key={_id}
+                  className="border-b hover:bg-gray-50 text-sm"
+                >
+                  <td className="py-3">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 bg-gray-800 rounded mr-3"></div>
+                      <div>
+                        <p className="font-semibold">{name}</p>
+                        <p className="text-gray-400 text-xs">Bruno Scott</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="text-center">{email}</td>
+                  <td className="text-center">{role}</td>
+
+                  <td className="text-center">
                     <button onClick={() => handleEdit(index)} className="text-green-500 hover:text-green-700">
                       <Pencil className="w-5 h-5" />
                     </button>
                   </td>
-                  <td className="px-4 py-2">
+                  
+                  <td className="text-center">
                     <button onClick={() => handleDelete(_id)} className="text-red-500 hover:text-red-700">
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </td>
                 </tr>
+
               ))}
             </tbody>
+           
           </table>
         </div>
-      </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-between items-center mt-4">
+       <div className="flex justify-between items-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`flex items-center justify-center px-4 py-2 text-white font-bold rounded-lg shadow-md ${
-            currentPage === 1
+          className={`flex items-center justify-center px-4 py-2 text-white font-bold rounded-lg shadow-md ${currentPage === 1
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-orange-500 hover:bg-orange-600"
-          } transition-colors duration-300`}
+            } transition-colors duration-300`}
           aria-label="Previous page"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -124,17 +162,16 @@ const MemberList = () => {
           </svg>
           <span className="ml-2">Previous</span>
         </button>
-        
+
         <span className="text-gray-700">Page {currentPage} of {totalPages}</span>
-        
+
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`flex items-center justify-center px-4 py-2 text-white font-bold rounded-lg shadow-md ${
-            currentPage === totalPages
+          className={`flex items-center justify-center px-4 py-2 text-white font-bold rounded-lg shadow-md ${currentPage === totalPages
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-orange-500 hover:bg-orange-600"
-          } transition-colors duration-300`}
+            } transition-colors duration-300`}
           aria-label="Next page"
         >
           <span className="mr-2">Next</span>
@@ -142,9 +179,9 @@ const MemberList = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
-      </div>
+      </div> 
 
-      {/* Edit Modal */}
+      {/* Edit Modal for members list*/}
       {showEditModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
@@ -206,6 +243,30 @@ const MemberList = () => {
           </div>
         </div>
       )}
+
+
+       {/* Add member  Modal */}
+       {showAddMemberModal && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+            <h2 className="text-lg font-semibold mb-4">Add Member</h2>
+            <MemberList/>
+            <button
+                  type="button"
+                  onClick={handleAddMemberCloseModal}
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg shadow-md"
+                >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+
+       
+
+
+
     </div>
   );
 };

@@ -19,13 +19,13 @@ const QueryAi = () => {
     setLoading(true);
     setError(null);
     try {
-      const { data } = await axios.get(`${BASE_URL}/ai/chat?text=${query}`, {
+      const response = await axios.get(`${BASE_URL}/ai/chat?text=${query}`, {
         headers: {
           'Content-Type': 'application/json',
         },
         withCredentials: true, // Allows sending cookies with the request
       });
-      const aiResponseText = data || 'No response text available';
+      const aiResponseText = response.data || 'No response text available';
 
       setResponse(aiResponseText); // Update the response state with the data received from the AI API
     } catch (err) {
@@ -54,14 +54,14 @@ const QueryAi = () => {
           {loading ? 'Loading...' : 'Submit'}
         </button>
       </form>
-      {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+ {error && <p className="text-red-500 text-center mt-4">{error}</p>}
       {response && (
         <div className="mt-6 p-4 bg-gray-100 border border-gray-300 rounded-lg">
          
           <p>{response}</p>
         </div>
-      )}
-    </div>
+      )} 
+     </div>
   );
 };
 

@@ -5,19 +5,25 @@ import AddMemberForm from '../components/SettingsPage/User/AddMemberForm';
 
 const ShopPage = () => {
   return (
-    <div >
 
-      {/* Shop Details Section */}
-      <ShopDetails />
+<div className="bg-yellow-50 min-h-screen p-6 font-sans text-gray-800 rounded-lg shadow-sm">
 
-      {/* Add New Member Section */}
-      <AddMemberForm />
+</div>
 
-      {/* Members Management Section */}
-      <MemberList />
-
-    </div>
   );
 };
 
 export default ShopPage;
+
+
+{/* Shop Details Section */}
+{/* <ShopDetails /> */}
+
+{/* Add New Member Section */}
+{/* <AddMemberForm /> */}
+
+{/* Members Management Section */}
+{/* <MemberList /> */}
+
+
+

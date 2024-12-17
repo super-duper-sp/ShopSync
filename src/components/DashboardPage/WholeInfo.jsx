@@ -52,10 +52,10 @@ const WholeInfo = () => {
           </p>
           <div className="mt-6 flex flex-col">
             <div className="font-bold text-4xl">
-              ₹ {totalRevenue?.toLocaleString() || "Loading..."}
+              ₹ {totalRevenue || "Loading..."}
             </div>
             <div className="py-2 px-2 border-2 border-gray-200 rounded-b-full rounded-r-full mt-2">
-              <p className="text-sm">${totalRevenueAiComment}</p>
+              {/* <p className="text-sm">${totalRevenueAiComment}</p> */}
             </div>
           </div>
         </div>

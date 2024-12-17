@@ -14,8 +14,8 @@ const DailyTransactionPage = () => {
   }, [dispatch]);
 
   return (
-    <div className="px-4 py-4">
-      <h1>Daily Transactions</h1>
+<div className="bg-yellow-50 min-h-screen p-6 font-sans text-gray-800 rounded-lg shadow-sm">
+     
       <EntryDailyTransaction />
       <div className="px-4 py-4">
         {loading && <p>Loading...</p>}

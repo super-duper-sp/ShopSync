@@ -4,9 +4,9 @@ import NavigationBar from "../components/HomePage/NavigationBar";
 
 const HomeLayout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen ">
       {/* Navigation Bar */}
-      <NavigationBar className="w-64 bg-white shadow-md" />
+      <NavigationBar className="w-64  shadow-md" />
 
       {/* Main Content */}
       <main className="flex-1 p-6">

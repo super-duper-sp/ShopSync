@@ -11,3 +11,7 @@ const SettingsPage = () => {
 }
 
 export default SettingsPage
+
+
+{/* <div>SettingsPage</div>
+    <Outlet/> */}
